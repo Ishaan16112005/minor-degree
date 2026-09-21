@@ -1,4 +1,4 @@
-module reg_file(
+module regfile(
   input logic clk,
   input logic we,
   input logic [2:0] rs1,

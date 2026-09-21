@@ -3,6 +3,9 @@ module extend(
   input logic sign_ext_en,
   output logic [15:0] imm16
   );
+  
+  logic sign_bit;
+  assign sign_bit = imm5[4];
 
   always_comb begin
     if(sign_ext_en) begin 

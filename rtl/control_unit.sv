@@ -8,7 +8,7 @@ module control (
     output logic       call_en,
     output logic       ret_en,
     output logic       reg_we,
-    output logic [3:0] alu_op,
+    output opcode_t alu_op,
     output logic       alu_src_sel,
     output logic       sign_ext_en,
     output logic       mem_write,
@@ -24,7 +24,7 @@ module control (
         mem_to_reg  = 1'b0;
         alu_src_sel = imm_flag;
         sign_ext_en = 1'b0;
-        alu_op      = opcode;
+        alu_op      = opcode_t'(opcode);
         
         case (opcode)
             

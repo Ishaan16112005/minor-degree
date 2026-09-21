@@ -5,7 +5,7 @@ module dmem #(
     input logic mem_write,
     input logic [15:0] addr,
     input logic [15:0] wd,
-    input logic [15:0] rd
+    output logic [15:0] rd
   );
 
   logic [15:0] mem [0:depth-1];
