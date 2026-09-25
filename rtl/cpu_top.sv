@@ -1,3 +1,5 @@
+import cpu_pkg::*;
+
 module cpu_top (
     input  logic        clk,
     input  logic        reset,
@@ -19,7 +21,7 @@ module cpu_top (
     logic        call_en;
     logic        ret_en;
     logic        reg_we;
-    logic [3:0]  alu_op;
+    opcode_t     alu_op;
     logic        alu_src_sel;
     logic        sign_ext_en;
     logic        mem_write;

@@ -1,5 +1,5 @@
 module dmem #(
-  parameter depth = 65536
+  parameter depth = 256
   )(
     input logic clk,
     input logic mem_write,
