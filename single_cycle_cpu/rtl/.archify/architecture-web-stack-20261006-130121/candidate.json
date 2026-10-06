@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Modern Web Application",
+    "output": ".archify/architecture-web-stack-20261006-130121/web-stack.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    { "id": "browser", "type": "external", "label": "User Browser", "sublabel": "Web client", "pos": [40, 280], "size": [145, 64] },
+    { "id": "next", "type": "frontend", "label": "Next.js", "sublabel": "UI + server rendering", "pos": [285, 280], "size": [165, 64] },
+    { "id": "express", "type": "backend", "label": "Express API Gateway", "sublabel": "routing + business logic", "pos": [550, 280], "size": [190, 64] },
+    { "id": "redis", "type": "database", "label": "Redis", "sublabel": "cache", "pos": [560, 95], "size": [170, 64] },
+    { "id": "postgres", "type": "database", "label": "PostgreSQL", "sublabel": "durable relational data", "pos": [565, 465], "size": [180, 64] }
+  ],
+  "connections": [
+    { "id": "browser-next", "from": "browser", "to": "next", "label": "HTTPS", "variant": "emphasis" },
+    { "id": "next-express", "from": "next", "to": "express", "label": "JSON over HTTPS" },
+    { "id": "express-redis", "from": "express", "to": "redis", "label": "cache lookup / update", "fromSide": "top", "toSide": "bottom", "labelDy": -45 },
+    { "id": "express-postgres", "from": "express", "to": "postgres", "label": "SQL read / write", "fromSide": "bottom", "toSide": "top", "labelDy": 45 }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "Request path", "items": ["Browser loads the Next.js app", "Next.js calls the Express API gateway", "Express returns API responses to the frontend"] },
+    { "dot": "emerald", "title": "Data path", "items": ["Express checks Redis for cached data", "Cache misses and writes use PostgreSQL", "Redis holds reusable data; PostgreSQL remains durable storage"] }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "3391fd1b-2597-44bf-bd0b-8572ae48700e",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/home/ishaan/Projects/minor/minor-degree/single_cycle_cpu/rtl/.archify/architecture-single-cycle-cpu-20261006-130521/candidate.json",
+  "output": "/home/ishaan/Projects/minor/minor-degree/single_cycle_cpu/rtl/.archify/architecture-single-cycle-cpu-20261006-130521/single-cycle-cpu.html",
+  "specification": {
+    "sha256": "d41aa219c99c38b4c719c6c87b8ee02cb5f8d85f338987f10511c3e21baf389b",
+    "bytes": 4805
+  },
+  "artifact": {
+    "sha256": "348805317aa67a206156897b439492abc6b302fd30d4020d2b98e3e51aa643ac",
+    "bytes": 771665
+  }
+}

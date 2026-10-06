@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "command": "deliver",
+  "status": "pending",
+  "receiptId": "5132af4e-c2f7-4b61-91fa-517a06ad3088",
+  "input": "/home/ishaan/Projects/minor/minor-degree/single_cycle_cpu/rtl/.archify/architecture-web-stack-20261006-130121/candidate.json",
+  "output": "/home/ishaan/Projects/minor/minor-degree/single_cycle_cpu/rtl/.archify/architecture-web-stack-20261006-130121/web-stack.html"
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Single-Cycle CPU Runtime Architecture",
+    "output": ".archify/architecture-single-cycle-cpu-20261006-130521/single-cycle-cpu.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "git@github.com:Ishaan16112005/minor-degree.git",
+      "link_mode": "local-only",
+      "revision": "5e23d58126489bad47d2590b0570b8f6c63e5f08"
+    }
+  },
+  "components": [
+    { "id": "instruction-source", "type": "external", "label": "Instruction Source", "sublabel": "16-bit instruction_in", "pos": [400, 24], "size": [190, 66], "sources": [{ "path": "single_cycle_cpu/rtl/cpu_top.sv", "line": 3, "end_line": 8 }] },
+    { "id": "integration", "type": "backend", "label": "CPU Top Integration", "sublabel": "decode fields • select operands / writeback", "pos": [365, 145], "size": [260, 78], "sources": [{ "path": "single_cycle_cpu/rtl/cpu_top.sv", "line": 11, "end_line": 53 }] },
+    { "id": "control", "type": "backend", "label": "Control Unit", "sublabel": "opcode + zero → enables and ALU operation", "pos": [720, 145], "size": [260, 78], "sources": [{ "path": "single_cycle_cpu/rtl/control_unit.sv", "line": 3, "end_line": 95 }] },
+    { "id": "registers", "type": "database", "label": "Register File", "sublabel": "8 × 16-bit • 2 async reads / clocked write", "pos": [40, 284], "size": [260, 78], "sources": [{ "path": "single_cycle_cpu/rtl/reg_file.sv", "line": 12, "end_line": 27 }] },
+    { "id": "extend", "type": "backend", "label": "Immediate Extension", "sublabel": "5-bit immediate → signed or zero-extended 16-bit", "pos": [720, 284], "size": [270, 78], "sources": [{ "path": "single_cycle_cpu/rtl/extend.sv", "line": 1, "end_line": 9 }] },
+    { "id": "alu", "type": "backend", "label": "ALU", "sublabel": "arithmetic • logic • shifts • address / compare", "pos": [365, 438], "size": [260, 78], "sources": [{ "path": "single_cycle_cpu/rtl/alu.sv", "line": 3, "end_line": 30 }] },
+    { "id": "dmem", "type": "database", "label": "Data Memory", "sublabel": "256 × 16-bit default • async read / clocked write", "pos": [720, 584], "size": [270, 78], "sources": [{ "path": "single_cycle_cpu/rtl/dmem.sv", "line": 1, "end_line": 19 }] },
+    { "id": "fetch", "type": "backend", "label": "PC / Fetch State", "sublabel": "increment • jump / call • return address", "pos": [365, 584], "size": [260, 78], "sources": [{ "path": "single_cycle_cpu/rtl/fetch.sv", "line": 1, "end_line": 34 }] },
+    { "id": "pc-consumer", "type": "external", "label": "PC Consumer", "sublabel": "16-bit pc_out", "pos": [40, 584], "size": [260, 62], "sources": [{ "path": "single_cycle_cpu/rtl/cpu_top.sv", "line": 3, "end_line": 8 }] }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "Single-Cycle CPU Core", "wraps": ["integration", "control", "registers", "extend", "alu", "dmem", "fetch"], "pad": 26 }
+  ],
+  "connections": [
+    { "id": "instruction-input", "from": "instruction-source", "to": "integration", "label": "instruction_in", "variant": "emphasis" },
+    { "id": "decoded-opcode", "from": "integration", "to": "control", "label": "opcode + immediate flag" },
+    { "id": "decoded-register-fields", "from": "integration", "to": "registers", "label": "rs1 / rs2 / rd" },
+    { "id": "decoded-immediate", "from": "integration", "to": "extend", "label": "imm5 + sign mode" },
+    { "id": "control-signals", "from": "control", "to": "integration", "label": "ALU op • enables • selects" },
+    { "id": "register-operands", "from": "registers", "to": "alu", "label": "rd1 + selected rd2" },
+    { "id": "extended-operand", "from": "extend", "to": "integration", "label": "imm16" },
+    { "id": "selected-alu-input", "from": "integration", "to": "alu", "label": "operand B" },
+    { "id": "alu-control", "from": "control", "to": "alu", "label": "alu_op" },
+    { "id": "alu-zero-feedback", "from": "alu", "to": "control", "label": "zero_flag" },
+    { "id": "alu-memory-address", "from": "alu", "to": "dmem", "label": "address = base + offset" },
+    { "id": "store-data", "from": "registers", "to": "dmem", "label": "rd2 on store" },
+    { "id": "memory-load-data", "from": "dmem", "to": "integration", "label": "read data (load)" },
+    { "id": "alu-result-writeback", "from": "alu", "to": "integration", "label": "ALU result" },
+    { "id": "register-writeback", "from": "integration", "to": "registers", "label": "writeback data + enable", "fromSide": "right", "toSide": "right", "via": [[675, 184], [675, 323]], "labelSegment": 1, "labelDx": 88 },
+    { "id": "pc-control-and-target", "from": "integration", "to": "fetch", "label": "jump / call / return + ALU target" },
+    { "id": "pc-output", "from": "fetch", "to": "pc-consumer", "label": "pc_out", "variant": "emphasis" }
+  ]
+}

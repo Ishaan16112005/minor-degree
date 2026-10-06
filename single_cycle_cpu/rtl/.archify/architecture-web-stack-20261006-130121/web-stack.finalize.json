@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "architecture",
+  "quality": "showcase",
+  "startedAt": "2026-10-06T07:31:44.873Z",
+  "specification": {
+    "path": "/home/ishaan/Projects/minor/minor-degree/single_cycle_cpu/rtl/.archify/architecture-web-stack-20261006-130121/candidate.json",
+    "sha256": "7d45e571eedb908239beee63ec5b01928f2755fb779294958e8d20f18d5f59db",
+    "bytes": 1872
+  },
+  "artifact": {
+    "path": "/home/ishaan/Projects/minor/minor-degree/single_cycle_cpu/rtl/.archify/architecture-web-stack-20261006-130121/web-stack.html"
+  },
+  "stages": {
+    "validate": {
+      "status": "not-run",
+      "execution": "embedded-in-deliver"
+    },
+    "deliver": {
+      "status": "fail",
+      "exitCode": 1,
+      "durationMs": 265,
+      "command": [
+        "/usr/bin/node",
+        "/home/ishaan/.agents/skills/archify/bin/archify.mjs",
+        "deliver",
+        "architecture",
+        "/home/ishaan/Projects/minor/minor-degree/single_cycle_cpu/rtl/.archify/architecture-web-stack-20261006-130121/candidate.json",
+        "/home/ishaan/Projects/minor/minor-degree/single_cycle_cpu/rtl/.archify/architecture-web-stack-20261006-130121/web-stack.html",
+        "--quality",
+        "showcase",
+        "--json"
+      ]
+    }
+  },
+  "diagnostics": [
+    {
+      "code": "finalize/stage-failure",
+      "severity": "error",
+      "message": "The deliver stage did not complete successfully.",
+      "subject": {
+        "stage": "deliver"
+      },
+      "evidence": {
+        "exitCode": 1,
+        "reason": "Command failed: /usr/bin/node /home/ishaan/.agents/skills/archify/bin/archify.mjs deliver architecture /home/ishaan/Projects/minor/minor-degree/single_cycle_cpu/rtl/.archify/architecture-web-stack-20261006-130121/candidate.json /home/ishaan/Projects/minor/minor-degree/single_cycle_cpu/rtl/.archify/architecture-web-stack-20261006-130121/web-stack.html --quality showcase --json\n"
+      },
+      "supportedFixes": [
+        "use the compact finalize summary to repair the named subject in place, then rerun finalize once"
+      ]
+    }
+  ],
+  "evidence": {
+    "receipt": "/home/ishaan/Projects/minor/minor-degree/single_cycle_cpu/rtl/.archify/architecture-web-stack-20261006-130121/web-stack.finalize.json",
+    "summaryReceipt": "/home/ishaan/Projects/minor/minor-degree/single_cycle_cpu/rtl/.archify/architecture-web-stack-20261006-130121/web-stack.finalize-summary.json"
+  },
+  "visualReview": "not-requested",
+  "failedStage": "deliver",
+  "finishedAt": "2026-10-06T07:31:45.182Z",
+  "durationMs": 308,
+  "update": {
+    "status": "unavailable",
+    "installedVersion": null,
+    "availableVersion": null,
+    "releaseNotes": null,
+    "checkedAt": null,
+    "source": null,
+    "noticeRequired": false,
+    "noticeText": null,
+    "reason": "check-failed"
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "/home/ishaan/Projects/minor/minor-degree/single_cycle_cpu/rtl/.archify/architecture-single-cycle-cpu-20261006-130521/candidate.json",
+    "sha256": "97764c2a4471f9faed2d014abb1037a552ae1fa717f181189644a15402e5bb81",
+    "bytes": 4806
+  },
+  "artifact": {
+    "path": "/home/ishaan/Projects/minor/minor-degree/single_cycle_cpu/rtl/.archify/architecture-single-cycle-cpu-20261006-130521/single-cycle-cpu.html",
+    "sha256": "348805317aa67a206156897b439492abc6b302fd30d4020d2b98e3e51aa643ac",
+    "bytes": 771665
+  },
+  "gates": {
+    "validate": "fail",
+    "deliver": "not-run",
+    "check": "not-run",
+    "browser-check": "not-run"
+  },
+  "failedStage": "validate",
+  "diagnostics": [
+    {
+      "code": "composition/proper-crossing",
+      "severity": "error",
+      "message": "[composition/proper-crossing] showcase architecture connections[8] id \"alu-control\" \"control\" -> \"alu\" crosses connections[14] id \"register-writeback\" \"integration\" -> \"registers\" at [675, 281] (segments 1 and 1) — if the authored via/fromSide/toSide/labelDx/labelSegment are not required by the user, remove them so the renderer can re-plan; otherwise preserve that intent and adjust route/via or fromSide/toSide so the connections use separate corridors.",
+      "subject": {
+        "diagramType": "architecture",
+        "collection": "connections",
+        "index": 8,
+        "id": "alu-control",
+        "from": "control",
+        "to": "alu"
+      },
+      "evidence": {
+        "otherRelationship": {
+          "diagramType": "architecture",
+          "collection": "connections",
+          "index": 14,
+          "id": "register-writeback",
+          "from": "integration",
+          "to": "registers"
+        },
+        "point": [
+          675,
+          281
+        ],
+        "segmentIndex": 1,
+        "otherSegmentIndex": 1
+      },
+      "supportedFixes": [
+        "if the authored via/fromSide/toSide/labelDx/labelSegment are not required by the user, remove them so the renderer can re-plan; otherwise preserve that intent and adjust route/via or fromSide/toSide so the connections use separate corridors"
+      ]
+    },
+    {
+      "code": "composition/label-route-clearance",
+      "severity": "error",
+      "message": "[composition/label-route-clearance] showcase architecture label \"opcode + immediate flag\" on connections[1] id \"decoded-opcode\" \"integration\" -> \"control\" label \"opcode + immediate flag\" is 0px from connections[4] id \"control-signals\" \"control\" -> \"integration\" label \"ALU op • enables • selects\" segment 0 [720, 163] -> [625, 163] (label rect [612, 157, 120, 14]; minimum 4px) — adjust labelAt, labelDx, labelDy, or labelSegment; otherwise adjust the other relationship route/via/channel.",
+      "subject": {
+        "diagramType": "architecture",
+        "collection": "connections",
+        "index": 1,
+        "id": "decoded-opcode",
+        "from": "integration",
+        "to": "control"
+      },
+      "evidence": {
+        "label": "opcode + immediate flag",
+        "otherRelationship": {
+          "diagramType": "architecture",
+          "collection": "connections",
+          "index": 4,
+          "id": "control-signals",
+          "from": "control",
+          "to": "integration"
+        },
+        "segmentIndex": 0,
+        "clearancePx": 0,
+        "minimumPx": 4,
+        "labelRect": {
+          "relation": {
+            "id": "decoded-opcode",
+            "from": "integration",
+            "to": "control",
+            "label": "opcode + immediate flag"
+          },
+          "relationIndex": 1,
+          "label": "opcode + immediate flag",
+          "x": 612.3,
+          "y": 157,
+          "width": 120.39999999999999,
+          "height": 14,
+          "lx": 672.5,
+          "ly": 167
+        },
+        "from": [
+          720,
+          163
+        ],
+        "to": [
+          625,
+          163
+        ]
+      },
+      "supportedFixes": [
+        "adjust labelAt, labelDx, labelDy, or labelSegment; otherwise adjust the other relationship route/via/channel"
+      ]
+    },
+    {
+      "code": "composition/label-gap",
+      "severity": "error",
+      "message": "Label \"opcode + immediate flag\" has only 95px between \"integration\" and \"control\"; it needs at least 137px to stay beside its route — increase that clear gap or place the connected nodes on another readable row, preserving the label.",
+      "subject": {
+        "diagramType": "architecture",
+        "collection": "connections",
+        "id": "decoded-opcode",
+        "from": "integration",
+        "to": "control"
+      },
+      "evidence": {
+        "clearGapPx": 95,
+        "minimumGapPx": 137,
+        "labelWidthPx": 120.39999999999999,
+        "obstacles": [
+          "integration",
+          "control"
+        ]
+      },
+      "supportedFixes": [
+        "increase the clear gap between the connected nodes to at least 137px",
+        "reposition the connected nodes together while preserving the full relationship label"
+      ]
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 3,
+    "shown": 3,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/home/ishaan/Projects/minor/minor-degree/single_cycle_cpu/rtl/.archify/architecture-single-cycle-cpu-20261006-130521/review-2/single-cycle-cpu.finalize.json",
+    "summaryReceipt": "/home/ishaan/Projects/minor/minor-degree/single_cycle_cpu/rtl/.archify/architecture-single-cycle-cpu-20261006-130521/review-2/single-cycle-cpu.finalize-summary.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.0.1",
+    "availableVersion": "3.0.1",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-06T07:37:51.661Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 355,
+  "nextAction": {
+    "action": "edit-in-place",
+    "candidate": "/home/ishaan/Projects/minor/minor-degree/single_cycle_cpu/rtl/.archify/architecture-single-cycle-cpu-20261006-130521/candidate.json",
+    "constraint": "Preserve all semantics and user-fixed geometry. Use references/architecture-layout-repair.md to choose a local repair or connected-scene reflow; edit the existing candidate.",
+    "then": "finalize-once"
+  }
+}
